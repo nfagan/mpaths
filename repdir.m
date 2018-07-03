@@ -1,10 +1,10 @@
 function p = repdir()
 
-%   REPDIR -- Get the path to the repositories path definition.
+%   REPDIR -- Get the path to the repositories directory.
 %
 %     An error is thrown if the file has not yet been defined.
 %
-%     See also repfname
+%     See also repdef, repfname
 %
 %     OUT:
 %       - `p` (char)
@@ -12,7 +12,7 @@ function p = repdir()
 f = repfname();
 
 if ( exist(f, 'file') == 0 )
-  error( 'Repository path has not been defined; see `repdefine`.' );
+  error( 'Repository path has not been defined; see `repdef`.' );
 end
 
 p = dload( f );
