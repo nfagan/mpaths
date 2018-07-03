@@ -2,7 +2,8 @@ function p = repdir()
 
 %   REPDIR -- Get the path to the repositories directory.
 %
-%     An error is thrown if the file has not yet been defined.
+%     An error is thrown if the file containing the repositories path
+%     has not yet been defined. In this case, use `repdef` to define it.
 %
 %     See also repdef, repfname
 %
