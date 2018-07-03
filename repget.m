@@ -6,6 +6,8 @@ function p = repget(name)
 %     folder containing 'example' is given as `repdir()`, as defined by
 %     `repdef()`.
 %
+%     See also repadd, repdir
+%
 %     IN:
 %       - `name` (char)
 %     OUT:
