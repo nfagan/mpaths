@@ -4,11 +4,11 @@ function p = repadd(name, recursive)
 %
 %     repadd( 'example' ) adds repository 'example' to the search path. The
 %     folder containing 'example' is given as `repdir()`, as defined by
-%     `repdef()`
+%     `repdef()`.
 %
 %     p = repadd( ... ) returns the full path to 'example'.
 %
-%     repadd( P, RECURSIVE ) specifies whether to recursively add
+%     repadd( ..., RECURSIVE ) specifies whether to recursively add
 %     subfolders of `P`. Default is false -- only the outer folder `P` is
 %     added.
 %
@@ -20,17 +20,11 @@ function p = repadd(name, recursive)
 %     OUT:
 %       - `p` (char)
 
-if ( nargin < 2 )
-  recursive = false; 
-end
+if ( nargin < 2 ), recursive = false; end
 
-assert( ischar(name), 'Name must be char; was "%s".', class(name) );
+p = repget( name );
 
-p = fullfile( repdir(), name );
-
-if ( recursive )
-  p = genpath( p );
-end
+if ( recursive ), p = genpath( p ); end
 
 addpath( p );
 
