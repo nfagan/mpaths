@@ -2,7 +2,7 @@ function p = repget(name)
 
 %   REPGET -- Get full path to repository.
 %
-%     repadd( 'example' ) gets the full path to repository 'example'. The
+%     repget( 'example' ) gets the full path to repository 'example'. The
 %     folder containing 'example' is given as `repdir()`, as defined by
 %     `repdef()`.
 %

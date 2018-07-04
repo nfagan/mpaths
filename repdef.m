@@ -13,9 +13,7 @@ function repdef(p)
 
 assert( ischar(p), 'Path must be char; was "%s".', class(p) );
 
-f = repfname();
-
-save( f, 'p' );
+save( repfname(), 'p' );
 
 fprintf( '\nSaved "%s" as repositories folder\n\n', p );
 
