@@ -12,7 +12,7 @@ function p = repdir()
 
 f = repfname();
 
-if ( exist(f, 'file') == 0 )
+if ( exist(f, 'file') ~= 2 )
   error( 'Repository path has not been defined; see `repdef`.' );
 end
 

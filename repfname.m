@@ -7,7 +7,6 @@ function f = repfname()
 %     OUT:
 %       - `f` (char)
 
-outerdir = fileparts( which(mfilename) );
-fname = 'mpaths.mat';
-f = fullfile( outerdir, fname );
+f = fullfile( fileparts(which(mfilename)), 'mpaths.mat' );
+
 end
