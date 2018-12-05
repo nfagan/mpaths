@@ -1,2 +1,4 @@
 mpaths.mat
 .DS_Store
+*.m~
+*.asv
