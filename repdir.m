@@ -6,9 +6,6 @@ function p = repdir()
 %     has not yet been defined. In this case, use `repdef` to define it.
 %
 %     See also repdef, repfname
-%
-%     OUT:
-%       - `p` (char)
 
 f = repfname();
 

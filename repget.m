@@ -13,8 +13,8 @@ function p = repget(name)
 %     OUT:
 %       - `p` (char)
 
-assert( ischar(name), 'Name must be char; was "%s".', class(name) );
+validateattributes( name, {'char', 'string'}, {'scalartext'}, mfilename, 'name' );
 
-p = fullfile( repdir(), name );
+p = fullfile( repdir(), char(name) );
 
 end

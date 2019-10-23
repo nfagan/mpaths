@@ -12,13 +12,7 @@ function p = repadd(name, recursive)
 %     subfolders of `P`. Default is false -- only the outer folder `P` is
 %     added.
 %
-%     See also repdef, repdir
-%
-%     IN:
-%       - `name` (char)
-%       - `recursive` (logical) |OPTIONAL|
-%     OUT:
-%       - `p` (char)
+%     See also repdef, repdir, isonpath.package, isonpath.file
 
 if ( nargin < 2 ), recursive = false; end
 

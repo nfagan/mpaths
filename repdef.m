@@ -19,11 +19,6 @@ function p = repdef(p, allow_non_existing)
 %     p = repdef(...) returns the saved directory path.
 %
 %     See also repdir, repfname, repadd
-%
-%     IN:
-%       - `p` (char)
-%     OUT:
-%       - `p` (char)
 
 if ( nargin < 2 )
   allow_non_existing = false;
