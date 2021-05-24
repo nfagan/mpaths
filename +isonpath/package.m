@@ -1,21 +1,35 @@
-function tf = package(name)
+function tf = package(name, preserve_toolbox_dir)
 
 %   PACKAGE -- True if a package namespace is on the search path.
 %
 %     tf = isonpath.package( name ); returns true if `name` is a top-level
-%     package namespace on Matlab's search path.
+%     package namespace on Matlab's search path, excluding packages in 
+%     Matlab's toolbox directory.
+%
+%     tf = isonpath.package( ..., preserve_toolbox_dir ); indicates whether
+%     to include Matlab's toolbox directory in the list of searchable
+%     paths. Default is false.
+%
+%     EX // 
+%
+%     isonpath.package( 'matlab' );       % false
+%     isonpath.package( 'matlab', true ); % true
 %
 %     See also isonpath.file, repadd
 
+if ( nargin < 2 )
+  preserve_toolbox_dir = false;
+end
+
 if ( ischar(name) )
-  tf = check( name );
+  tf = check( name, preserve_toolbox_dir );
 else
-  tf = cellfun( @check, name );
+  tf = cellfun( @(x) check(x, preserve_toolbox_dir), name );
 end
 
 end
 
-function tf = check(name)
+function tf = check(name, preserve_toolbox_dir)
 
 persistent folder_cache;
 
@@ -35,7 +49,7 @@ if ( ~isa(folder_cache, 'containers.Map') )
   folder_cache = containers.Map();
 end
 
-p = get_path();
+p = get_path( preserve_toolbox_dir );
 
 if ( folder_cache.isKey(name) )
   cache_info = folder_cache(name);
@@ -96,10 +110,13 @@ tf = exist( p, 'dir' );
 
 end
 
-function p = get_path()
+function p = get_path(preserve_toolbox_dir)
 
 p = strsplit( path(), pathsep() );
-is_toolbox = contains( p, toolboxdir('') );
-p(is_toolbox) = [];
+
+if ( ~preserve_toolbox_dir )
+  is_toolbox = contains( p, toolboxdir('') );
+  p(is_toolbox) = [];
+end
 
 end
